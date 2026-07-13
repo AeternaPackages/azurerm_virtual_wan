@@ -70,21 +70,21 @@ EOT
     location                          = string
     name                              = string
     resource_group_name               = string
-    allow_branch_to_branch_traffic    = optional(bool)   # Default: true
-    disable_vpn_encryption            = optional(bool)   # Default: false
-    office365_local_breakout_category = optional(string) # Default: "None"
+    allow_branch_to_branch_traffic    = optional(bool)
+    disable_vpn_encryption            = optional(bool)
+    office365_local_breakout_category = optional(string)
     tags                              = optional(map(string))
-    type                              = optional(string) # Default: "Standard"
+    type                              = optional(string)
     virtual_hubs = optional(map(object({
       location                               = string
       name                                   = string
       resource_group_name                    = string
       address_prefix                         = optional(string)
-      branch_to_branch_traffic_enabled       = optional(bool)   # Default: false
-      hub_routing_preference                 = optional(string) # Default: "ExpressRoute"
+      branch_to_branch_traffic_enabled       = optional(bool)
+      hub_routing_preference                 = optional(string)
       sku                                    = optional(string)
       tags                                   = optional(map(string))
-      virtual_router_auto_scale_min_capacity = optional(number) # Default: 2
+      virtual_router_auto_scale_min_capacity = optional(number)
       route = optional(list(object({
         address_prefixes    = list(string)
         next_hop_ip_address = string
@@ -98,7 +98,7 @@ EOT
       virtual_hub_connections = optional(map(object({
         name                      = string
         remote_virtual_network_id = string
-        internet_security_enabled = optional(bool) # Default: false
+        internet_security_enabled = optional(bool)
         routing = optional(object({
           associated_route_table_id = optional(string)
           inbound_route_map_id      = optional(string)
@@ -107,8 +107,8 @@ EOT
             labels          = optional(set(string))
             route_table_ids = optional(list(string))
           }))
-          static_vnet_local_route_override_criteria   = optional(string) # Default: "Contains"
-          static_vnet_propagate_static_routes_enabled = optional(bool)   # Default: true
+          static_vnet_local_route_override_criteria   = optional(string)
+          static_vnet_propagate_static_routes_enabled = optional(bool)
           static_vnet_route = optional(list(object({
             address_prefixes    = optional(set(string))
             name                = optional(string)
@@ -121,7 +121,7 @@ EOT
         public_ip_address_id         = string
         subnet_id                    = string
         private_ip_address           = optional(string)
-        private_ip_allocation_method = optional(string) # Default: "Dynamic"
+        private_ip_allocation_method = optional(string)
       })))
       virtual_hub_route_tables = optional(map(object({
         name   = string
@@ -131,7 +131,7 @@ EOT
           destinations_type = string
           name              = string
           next_hop          = string
-          next_hop_type     = optional(string) # Default: "ResourceId"
+          next_hop_type     = optional(string)
         })))
       })))
       virtual_hub_routing_intents = optional(map(object({

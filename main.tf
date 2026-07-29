@@ -78,48 +78,48 @@ locals {
 }
 
 module "virtual_wans" {
-  source       = "git::https://github.com/AeternaModules/azurerm_virtual_wan.git?ref=v4.81.0"
+  source       = "git::https://github.com/AeternaModules/azurerm_virtual_wan.git?ref=v5.0.0"
   virtual_wans = local.virtual_wans
 }
 
 module "virtual_hubs" {
-  source       = "git::https://github.com/AeternaModules/azurerm_virtual_hub.git?ref=v4.81.0"
+  source       = "git::https://github.com/AeternaModules/azurerm_virtual_hub.git?ref=v5.0.0"
   virtual_hubs = local.virtual_hubs
   depends_on   = [module.virtual_wans]
 }
 
 module "virtual_hub_bgp_connections" {
-  source                      = "git::https://github.com/AeternaModules/azurerm_virtual_hub_bgp_connection.git?ref=v4.81.0"
+  source                      = "git::https://github.com/AeternaModules/azurerm_virtual_hub_bgp_connection.git?ref=v5.0.0"
   virtual_hub_bgp_connections = local.virtual_hub_bgp_connections
   depends_on                  = [module.virtual_hubs]
 }
 
 module "virtual_hub_connections" {
-  source                  = "git::https://github.com/AeternaModules/azurerm_virtual_hub_connection.git?ref=v4.81.0"
+  source                  = "git::https://github.com/AeternaModules/azurerm_virtual_hub_connection.git?ref=v5.0.0"
   virtual_hub_connections = local.virtual_hub_connections
   depends_on              = [module.virtual_hubs]
 }
 
 module "virtual_hub_ips" {
-  source          = "git::https://github.com/AeternaModules/azurerm_virtual_hub_ip.git?ref=v4.81.0"
+  source          = "git::https://github.com/AeternaModules/azurerm_virtual_hub_ip.git?ref=v5.0.0"
   virtual_hub_ips = local.virtual_hub_ips
   depends_on      = [module.virtual_hubs]
 }
 
 module "virtual_hub_route_tables" {
-  source                   = "git::https://github.com/AeternaModules/azurerm_virtual_hub_route_table.git?ref=v4.81.0"
+  source                   = "git::https://github.com/AeternaModules/azurerm_virtual_hub_route_table.git?ref=v5.0.0"
   virtual_hub_route_tables = local.virtual_hub_route_tables
   depends_on               = [module.virtual_hubs]
 }
 
 module "virtual_hub_routing_intents" {
-  source                      = "git::https://github.com/AeternaModules/azurerm_virtual_hub_routing_intent.git?ref=v4.81.0"
+  source                      = "git::https://github.com/AeternaModules/azurerm_virtual_hub_routing_intent.git?ref=v5.0.0"
   virtual_hub_routing_intents = local.virtual_hub_routing_intents
   depends_on                  = [module.virtual_hubs]
 }
 
 module "virtual_hub_security_partner_providers" {
-  source                                 = "git::https://github.com/AeternaModules/azurerm_virtual_hub_security_partner_provider.git?ref=v4.81.0"
+  source                                 = "git::https://github.com/AeternaModules/azurerm_virtual_hub_security_partner_provider.git?ref=v5.0.0"
   virtual_hub_security_partner_providers = local.virtual_hub_security_partner_providers
   depends_on                             = [module.virtual_hubs]
 }
